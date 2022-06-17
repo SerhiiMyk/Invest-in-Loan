@@ -1,5 +1,5 @@
 <div class="loan">
-  <div class="loan-details">
+  <div class="loan-info">
     <h2 class="loan-title">{{loan.title}}</h2>
     <div class="loan-details">
       <h3>available amount: {{loan.available|currency:'USD':'symbol':'1.0'}}</h3>
@@ -8,7 +8,7 @@
   </div>
   <div class="button-div">
     <p class="loan-indication" *ngIf="showIndication">Invested</p>
-    <button (click)="showPopup = true">Invest</button>
+    <button class="loan-button" (click)="showPopup = true">INVEST</button>
   </div>
 </div>
 <app-invest-popup *ngIf="showPopup" [loan]="loan" (popupEmit)="emitHandler($event)"></app-invest-popup>

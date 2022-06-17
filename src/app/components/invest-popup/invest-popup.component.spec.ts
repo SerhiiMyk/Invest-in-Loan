@@ -2,8 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { InvestPopupComponent } from './invest-popup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InvestInLoanService } from '../../services/invest-in-loan.service';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TermPipe } from '../../pipes/term.pipe';
+import { CUSTOM_ELEMENTS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 describe('InvestPopupComponent', () => {
@@ -19,10 +18,21 @@ describe('InvestPopupComponent', () => {
     ltv: 48.80,
     amount: 85754
   }
+
+  @Pipe({ name: 'term' })
+  class MockPipe implements PipeTransform {
+    transform(value: number): string {
+      return `${ Math.round(value / (60 * 60 * 24)) } days`
+    }
+  }
+
   const fakeInvestInLoanService = jasmine.createSpyObj('fakeInvestInLoanService', ['invest'])
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InvestPopupComponent, TermPipe],
+      declarations: [
+        InvestPopupComponent,
+        MockPipe
+      ],
       imports: [ReactiveFormsModule],
       providers: [{
         provide: InvestInLoanService, useValue: fakeInvestInLoanService

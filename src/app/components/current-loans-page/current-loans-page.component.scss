@@ -1,0 +1,36 @@
+.loans {
+
+  &-title {
+    margin: 32px 0 32px 64px;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  hr {
+    border: 1px solid rgba(48, 50, 71, 0.1);
+  }
+
+  &-wrap {
+    margin: 0 64px;
+    max-width: 1000px;
+  }
+
+  &-total-div {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+}
+
+
+
+
+
+

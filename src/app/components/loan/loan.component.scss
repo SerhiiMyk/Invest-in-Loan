@@ -1,0 +1,53 @@
+.loan {
+  margin-top: 32px;
+  padding: 32px;
+  border: 1px solid rgba(48, 50, 71, 0.1);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+
+  &-title {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  &-details {
+    margin-top: 16px;
+
+    h3 {
+      padding-top: 10px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+  &-indication {
+    position: absolute;
+    right: 32px;
+    top: 13px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #51A571;
+  }
+
+  &-button {
+    width: 137px;
+    height: 56px;
+    margin-top: 14px;
+    background: #F7E308;
+    border-radius: 5px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lighten(#F7E308, 10%);
+    }
+  }
+}

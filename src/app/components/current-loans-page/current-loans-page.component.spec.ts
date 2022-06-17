@@ -63,8 +63,16 @@ describe('CurrentLoansPageComponent', () => {
     expect(component.totalAmount).toEqual(43364)
   });
 
+  it('should unsubscribe during onDestroy', () => {
+    spyOn(component.sub[0],'unsubscribe')
+    spyOn(component.sub[1],'unsubscribe')
+    component.ngOnDestroy()
+    expect(component.sub[0].unsubscribe).toHaveBeenCalled()
+    expect(component.sub[1].unsubscribe).toHaveBeenCalled()
+  });
+
   it('should display title', () => {
-    const titleEl = fixture.debugElement.query(By.css('.title')).nativeElement
+    const titleEl = fixture.debugElement.query(By.css('.loans-title')).nativeElement
     expect(titleEl.innerText).toEqual('Current Loans');
   });
 
@@ -74,13 +82,9 @@ describe('CurrentLoansPageComponent', () => {
     expect(loansEl.length).toEqual(2);
   });
 
-  it('should display total amount header:', () => {
-    const totalAmountHeaderEl = fixture.debugElement.query(By.css('.total-amount-header')).nativeElement.innerText
-    expect(totalAmountHeaderEl).toEqual('Total amount available for investment:');
-  });
-
-  it('should display total amount value:', () => {
-    const totalAmountValueEl = fixture.debugElement.query(By.css('.total-amount-value')).nativeElement.innerText
-    expect(totalAmountValueEl).toEqual('$43,364');
+  it('should display total amount', () => {
+    const totalAmountHeaderEl = fixture.debugElement.queryAll(By.css('span'))
+    expect(totalAmountHeaderEl[0].nativeElement.innerText).toEqual('Total amount available for investment:');
+    expect(totalAmountHeaderEl[1].nativeElement.innerText).toEqual('$43,364');
   });
 });
