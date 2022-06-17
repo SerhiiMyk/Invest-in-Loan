@@ -1,1 +1,7 @@
-<p>current-loans-page works!</p>
+<h1 class="title">Current Loans</h1>
+<hr>
+<div class="loans-div" *ngFor="let loan of loansObj.loans">
+  <app-loan [loan]="loan"></app-loan>
+</div>
+<span class="total-amount-header">Total amount available for investment:</span>
+<span class="total-amount-value">{{totalAmount|currency:'USD':'symbol':'1.0'}}</span>

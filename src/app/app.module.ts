@@ -7,6 +7,7 @@ import { CurrentLoansPageComponent } from './components/current-loans-page/curre
 import { LoanComponent } from './components/loan/loan.component';
 import { InvestPopupComponent } from './components/invest-popup/invest-popup.component';
 import { TermPipe } from './pipes/term.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TermPipe } from './pipes/term.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

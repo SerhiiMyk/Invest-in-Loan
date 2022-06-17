@@ -25,19 +25,19 @@ describe('InvestInLoanService', () => {
   });
 
   it('getLoans method should return mock observable object', () => {
-    // service.getLoans().subscribe(data => expect(data).toEqual(service.loansObj))
+    service.getLoans().subscribe(data => expect(data).toEqual(service.loansObj))
   });
 
   it('invest method should change loansObj and call generateTotalAmount method', () => {
-    // spyOn(service, 'generateTotalAmount')
-    // service.invest(changedLoan)
-    // expect(service.loansObj.loans[0]).toEqual(changedLoan)
-    // expect(service.generateTotalAmount).toHaveBeenCalled()
+    spyOn(service, 'generateTotalAmount')
+    service.invest(changedLoan)
+    expect(service.loansObj.loans[0]).toEqual(changedLoan)
+    expect(service.generateTotalAmount).toHaveBeenCalled()
   });
 
   it('generateTotalAmount should calculate sum of available property each loan and pass this ' +
     'value to the totalAmount subject', () => {
-    // service.totalAmount.subscribe(value => expect(value).toEqual(55723))
-    // service.generateTotalAmount()
+    service.totalAmount.subscribe(value => expect(value).toEqual(55723))
+    service.generateTotalAmount()
   });
 });

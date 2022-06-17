@@ -29,7 +29,7 @@ describe('LoanComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoanComponent);
     component = fixture.componentInstance;
-    // component.loan = mockLoanData
+    component.loan = mockLoanData
     fixture.detectChanges();
   });
 
@@ -55,7 +55,7 @@ describe('LoanComponent', () => {
   });
 
   it('should display loan indication text - Invested if showIndication is true', () => {
-    // component.showIndication = true
+    component.showIndication = true
     fixture.detectChanges()
     expect(fixture.debugElement.query(By.css('.loan-indication')).nativeElement.innerText).toEqual('Invested')
   });
@@ -70,21 +70,21 @@ describe('LoanComponent', () => {
 
   it('should call emitHandler method when popup emit data',
     () => {
-      // spyOn(component, 'emitHandler')
-      // component.showPopup = true
+      spyOn(component, 'emitHandler')
+      component.showPopup = true
       fixture.detectChanges()
       const popupEl = fixture.debugElement.query(By.css('app-invest-popup'))
       popupEl.triggerEventHandler('popupEmit', false)
-      // expect(component.emitHandler).toHaveBeenCalledWith(false)
+      expect(component.emitHandler).toHaveBeenCalledWith(false)
     });
 
   it('emitHandler method depending on emit value should close invested-popup or change loan and show loan indication',
     () => {
-      // component.emitHandler(true)
-      // expect(component.showPopup).toEqual(true)
-      // component.emitHandler(mockLoanData)
-      // expect(component.loan).toEqual(mockLoanData)
-      // expect(component.showIndication).toEqual(true)
-      // expect(component.showPopup).toEqual(false)
+      component.emitHandler(true)
+      expect(component.showPopup).toEqual(true)
+      component.emitHandler(mockLoanData)
+      expect(component.loan).toEqual(mockLoanData)
+      expect(component.showIndication).toEqual(true)
+      expect(component.showPopup).toEqual(false)
     });
 });

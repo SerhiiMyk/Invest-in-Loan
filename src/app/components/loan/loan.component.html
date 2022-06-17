@@ -1,1 +1,14 @@
-<p>loan works!</p>
+<div class="loan">
+  <div class="loan-details">
+    <h2 class="loan-title">{{loan.title}}</h2>
+    <div class="loan-details">
+      <h3>available amount: {{loan.available|currency:'USD':'symbol':'1.0'}}</h3>
+      <h3>invest amount: {{loan.amount|currency:'USD':'symbol':'1.0'}}</h3>
+    </div>
+  </div>
+  <div class="button-div">
+    <p class="loan-indication" *ngIf="showIndication">Invested</p>
+    <button (click)="showPopup = true">Invest</button>
+  </div>
+</div>
+<app-invest-popup *ngIf="showPopup" [loan]="loan" (popupEmit)="emitHandler($event)"></app-invest-popup>

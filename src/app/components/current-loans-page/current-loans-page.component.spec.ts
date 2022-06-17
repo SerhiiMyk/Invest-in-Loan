@@ -59,8 +59,8 @@ describe('CurrentLoansPageComponent', () => {
   });
 
   it('should get loansObj and totalAmount values from investInLoanService service during onInit', () => {
-    // expect(component.loansObj).toEqual(mockLoansObj)
-    // expect(component.totalAmount).toEqual(43364)
+    expect(component.loansObj).toEqual(mockLoansObj)
+    expect(component.totalAmount).toEqual(43364)
   });
 
   it('should display title', () => {

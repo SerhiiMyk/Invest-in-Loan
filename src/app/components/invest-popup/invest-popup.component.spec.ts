@@ -35,7 +35,7 @@ describe('InvestPopupComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(InvestPopupComponent);
     component = fixture.componentInstance;
-    // component.loan = mockLoan
+    component.loan = mockLoan
     fixture.detectChanges();
   });
 
@@ -44,16 +44,16 @@ describe('InvestPopupComponent', () => {
   });
 
   it('should call closePopup on close icon click', () => {
-    // spyOn(component, 'closePopup')
+    spyOn(component, 'closePopup')
     expect(component).toBeTruthy();
     fixture.debugElement.query(By.css('i')).nativeElement.click()
-    // expect(component.closePopup).toHaveBeenCalled()
+    expect(component.closePopup).toHaveBeenCalled()
   });
 
   it('closePopup method should emit false value', () => {
-    // spyOn(component.popupEmit, 'emit')
-    // component.closePopup()
-    // expect(component.popupEmit.emit).toHaveBeenCalledWith(false)
+    spyOn(component.popupEmit, 'emit')
+    component.closePopup()
+    expect(component.popupEmit.emit).toHaveBeenCalledWith(false)
   });
 
   it('should display popup-loan-title and loan details', () => {
@@ -65,32 +65,32 @@ describe('InvestPopupComponent', () => {
   });
 
   it('should trigger submitForm method on submit button clicked', () => {
-      // spyOn(component, 'submitForm')
-      // component.form.setValue({ invest: 500 })
+      spyOn(component, 'submitForm')
+      component.form.setValue({ invest: 500 })
       fixture.detectChanges()
       fixture.debugElement.query(By.css('button')).nativeElement.click()
-      // expect(component.submitForm).toHaveBeenCalled()
+      expect(component.submitForm).toHaveBeenCalled()
     }
   )
 
   it('submitForm method should change loan property, call investInLoanService invest and popupEmit emit methods', () => {
-      // spyOn(component.popupEmit, 'emit')
-      // component.form.setValue({ invest: 500 })
-      // component.submitForm()
-      // expect(component.loan.available).toEqual(11459)
-      // expect(component.loan.amount).toEqual(86254)
-      // expect(fakeInvestInLoanService.invest).toHaveBeenCalledWith(component.loan)
-      // expect(component.popupEmit.emit).toHaveBeenCalledWith(component.loan)
+      spyOn(component.popupEmit, 'emit')
+      component.form.setValue({ invest: 500 })
+      component.submitForm()
+      expect(component.loan.available).toEqual(11459)
+      expect(component.loan.amount).toEqual(86254)
+      expect(fakeInvestInLoanService.invest).toHaveBeenCalledWith(component.loan)
+      expect(component.popupEmit.emit).toHaveBeenCalledWith(component.loan)
     }
   )
 
   it('check input validation. If input value is invalid button will disabled and shows an error', () => {
       const buttonEl = fixture.debugElement.query(By.css('button'))
       expect(buttonEl.nativeElement.disabled).toBeTruthy()
-      // component.form.setValue({ invest: 500 })
+      component.form.setValue({ invest: 500 })
       fixture.detectChanges()
       expect(buttonEl.nativeElement.disabled).toBeFalsy()
-      // component.form.setValue({ invest: 10000000 })
+      component.form.setValue({ invest: 10000000 })
       fixture.detectChanges()
       expect(buttonEl.nativeElement.disabled).toBeTruthy()
       const errorEl = fixture.debugElement.query(By.css('.error-message')).nativeElement

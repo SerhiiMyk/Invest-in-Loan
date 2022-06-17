@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ILoan } from '../../interfaces/loan.interfaces';
 
 @Component({
   selector: 'app-loan',
   templateUrl: './loan.component.html',
   styleUrls: ['./loan.component.scss']
 })
-export class LoanComponent implements OnInit {
+export class LoanComponent {
 
-  constructor() { }
+  @Input() loan!: ILoan
 
-  ngOnInit(): void {
+  showPopup = false
+  showIndication = false
+
+  emitHandler(data: ILoan | boolean) {
+    if (typeof data !== 'boolean') {
+      this.loan = data
+      this.showIndication = true
+      this.showPopup = false
+    } else {
+      this.showPopup = data
+    }
   }
-
 }

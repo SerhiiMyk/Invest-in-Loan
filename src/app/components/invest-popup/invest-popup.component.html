@@ -1,1 +1,15 @@
-<p>invest-popup works!</p>
+<div class="popup-wrap">
+  <div class="popup-div">
+    <i (click)="closePopup()" class="bi bi-x-lg"></i>
+    <h1>Invest in Loan</h1>
+    <h2 class="popup-loan-title">{{loan.title}}</h2>
+    <h2>Amount available: {{loan.available|currency:'USD':'symbol':'1.0'}}</h2>
+    <h2>Loan ends in: {{loan.term_remaining|term}}</h2>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <input [ngClass]="{'error':(!form.valid && form.touched) || form.get('invest')?.value>loan.available}"
+             type="number" formControlName="invest">
+      <button type="submit" [disabled]="!form.valid || form.get('invest')?.value>loan.available">Invest</button>
+      <p class="error-message" *ngIf="form.get('invest')?.value>loan.available">input value is bigger then available</p>
+    </form>
+  </div>
+</div>
